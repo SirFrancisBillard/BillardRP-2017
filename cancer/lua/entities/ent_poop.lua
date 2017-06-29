@@ -10,7 +10,7 @@ ENT.Model = "models/Gibs/HGIBS_spine.mdl"
 if SERVER then
 	function ENT:Initialize()
 		self:SetModel(self.Model)
-		self:SetColor(Color(100, 500, 0))
+		self:SetColor(Color(100, 50, 0))
 		self:SetMaterial("models/props_pipes/pipeset_metal") 
 		self:PhysicsInit(SOLID_VPHYSICS)
 		self:SetMoveType(MOVETYPE_VPHYSICS)

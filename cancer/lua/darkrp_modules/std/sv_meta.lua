@@ -3,10 +3,11 @@ local META = FindMetaTable("Player")
 
 function META:GiveSTD()
 	timer.Create(self:SteamID() .. "_PlayerHasSTD", 1.5, 0, function()
-		player:SetHealth(player:Health() - 5)
-		player:EmitSound("STD.Moan")
-		if player:Health() <= 0 then 
-			player:Kill()
+		if not IsValid(self) then return end
+		self:SetHealth(self:Health() - 5)
+		self:EmitSound("STD.Moan")
+		if self:Health() <= 0 then 
+			self:Kill()
 			self:CureSTD()
 		end
 	end)
