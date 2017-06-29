@@ -4,7 +4,6 @@ ENT.Type = "anim"
 ENT.Base = "base_gmodentity"
 
 ENT.PrintName = "Soda"
-
 ENT.Spawnable = true
 ENT.Model = "models/props_junk/PopCan01a.mdl"
 

@@ -4,7 +4,6 @@ ENT.Type = "anim"
 ENT.Base = "base_gmodentity"
 
 ENT.PrintName = "Vending Machine"
-
 ENT.Spawnable = true
 ENT.Model = "models/props_interiors/VendingMachineSoda01a.mdl"
 
