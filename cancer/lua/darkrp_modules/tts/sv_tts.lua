@@ -1,11 +1,13 @@
 
 util.AddNetworkString("TTS.Parse")
 
-function TTS(ply)
+function TTS(ply, text)
 	net.Start("TTS.Parse")
 	net.WriteString(text)
 	net.WriteEntity(ply)
 	net.Broadcast()
+
+	return ""
 end
 
-DarkRP.defineChatCommand("roll", TTS)
+DarkRP.defineChatCommand("tts", TTS)

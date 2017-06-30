@@ -9,6 +9,8 @@ SWEP.ViewModel = "models/weapons/v_pistol.mdl"
 SWEP.ViewModelFOV = 62
 SWEP.WorldModel = ""
 
+SWEP.Spawnable = true
+
 local BURGER = "models/food/burger.mdl"
 
 function SWEP:Initialize()

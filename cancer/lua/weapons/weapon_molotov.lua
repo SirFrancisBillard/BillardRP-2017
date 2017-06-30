@@ -20,7 +20,6 @@ SWEP.DrawCrosshair = false
 
 SWEP.Spawnable = true	
 SWEP.AdminSpawnable = true
-SWEP.Category = "RP"
 
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = 1

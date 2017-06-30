@@ -1,17 +1,38 @@
 AddCSLuaFile()
 
 if SERVER then
-	resource.AddFile("sound/cityrp/jihad_1.wav")
-	resource.AddFile("sound/cityrp/jihad_2.wav")
+	resource.AddFile("sound/jihad/jihad_1.wav")
+	resource.AddFile("sound/jihad/jihad_2.wav")
+
+	resource.AddFile("sound/music/islam.wav")
 end
 
 sound.Add({
 	name = "Jihad.Scream",
 	channel = CHAN_AUTO,
 	volume = 1.0,
-	level = 80,
+	level = 150,
 	pitch = {95, 110},
-	sound = {"cityrp/jihad_1.wav", "cityrp/jihad_2.wav"}
+	sound = {"jihad/jihad_1.wav", "jihad/jihad_2.wav"}
+})
+
+
+sound.Add({
+	name = "Jihad.Explode",
+	channel = CHAN_AUTO,
+	volume = 1.0,
+	level = 150,
+	pitch = {100},
+	sound = {"ambient/explosions/explode_1.wav", "ambient/explosions/explode_3.wav", "ambient/explosions/explode_4.wav"}
+})
+
+sound.Add({
+	name = "Jihad.Islam",
+	channel = CHAN_AUTO,
+	volume = 1.0,
+	level = 150,
+	pitch = {100},
+	sound = {"music/islam.wav"}
 })
 
 SWEP.PrintName = "Jihad Bomb"
@@ -31,7 +52,6 @@ SWEP.ViewModelFOV = 54
 SWEP.ViewModelFlip = false
 
 SWEP.Spawnable = true
-SWEP.Category = "RP"
 
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
@@ -54,7 +74,13 @@ end
 
 function SWEP:PrimaryAttack()
 	self:SetNextPrimaryFire(CurTime() + 2)
+
+	-- self.Owner:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)
+
 	if SERVER then
+		-- todo: consider moving these first four functions outside of SERVER to minimize networking?
+		-- update: moved the gesture to shared but kept the sound to sync which sound it plays
+
 		self.Owner:AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)
 		BroadcastLua([[Entity(]] .. self.Owner:EntIndex() .. [[):AnimRestartGesture(GESTURE_SLOT_ATTACK_AND_RELOAD, ACT_GMOD_GESTURE_TAUNT_ZOMBIE, true)]])
 
@@ -65,19 +91,24 @@ function SWEP:PrimaryAttack()
 		local ply = self.Owner
 		timer.Simple(1, function()
 			if not IsValid(ply) or not ply:Alive() then return end
+			local pos = ply:GetPos()
 
-			local explosion = ents.Create("env_explosion")
-			explosion:SetPos(ply:GetPos())
-			explosion:SetOwner(ply)
-			explosion:SetKeyValue("iMagnitude", "200")
-			explosion:Spawn()
-			explosion:Fire("Explode", 0, 0)
-			explosion:EmitSound(Sound("ambient/explosions/explode_" .. math.random(1, 4) .. ".wav", 200, math.random(100, 150)))
+			ParticleEffect("explosion_huge", pos, vector_up:Angle())
+			ply:EmitSound(Sound("Jihad.Explode"))
+
+			util.Decal("Rollermine.Crater", pos, pos - Vector(0, 0, 500), ply)
+			util.Decal("Scorch", pos, pos - Vector(0, 0, 500), ply)
 
 			ply:SetModel("models/Humans/Charple0" .. math.random(1, 4) .. ".mdl")
 			ply:SetColor(color_white)
 
-			util.BlastDamage(ply, ply, ply:GetPos(), 400, 300)
+			util.BlastDamage(ply, ply, pos, 1000, 230)
+
+			timer.Simple(0.5, function()
+				if not pos then return end
+
+				sound.Play(Sound("Jihad.Islam"), pos)
+			end)
 		end)
 	end
 end

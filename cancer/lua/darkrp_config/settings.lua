@@ -94,7 +94,7 @@ GM.Config.enablebuypistol			   = true
 -- enforceplayermodel - Whether or not to force players to use their role-defined character models.
 GM.Config.enforceplayermodel			= false
 -- globalshow - Whether or not to display player info above players' heads in-game.
-GM.Config.globalshow					= true
+GM.Config.globalshow					= false
 -- ironshoot - Enable/disable whether people need iron sights to shoot.
 GM.Config.ironshoot					 = false
 -- showjob - Whether or not to display a player's job above their head in-game.

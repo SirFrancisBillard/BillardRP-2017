@@ -1,3 +1,5 @@
+AddCSLuaFile()
+
 SWEP.PrintName			= "Pepper Spray"
 SWEP.Instructions		= "Primary fire to disorient someone."
 
@@ -7,7 +9,6 @@ game.AddAmmoType({
 	tracer = TRACER_NONE,
 })
 
-SWEP.Category = "RP"
 SWEP.Spawnable = true
 
 SWEP.Primary.ClipSize		= 1000
