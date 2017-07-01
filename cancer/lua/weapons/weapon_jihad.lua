@@ -16,7 +16,6 @@ sound.Add({
 	sound = {"jihad/jihad_1.wav", "jihad/jihad_2.wav"}
 })
 
-
 sound.Add({
 	name = "Jihad.Explode",
 	channel = CHAN_AUTO,

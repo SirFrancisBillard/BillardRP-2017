@@ -3,8 +3,10 @@ AddCSLuaFile()
 ENT.Type = "anim"
 ENT.Base = "base_anim"
 
-ENT.PrintName = "Fire" 
+ENT.PrintName = "Fire"
+
 ENT.Spawnable = true
+ENT.Model = "models/props_wasteland/kitchen_counter001c.mdl"
 
 PrecacheParticleSystem("fire_medium_02_nosmoke")
 
@@ -28,7 +30,7 @@ end
 function ENT:Initialize()
 	local fireSize = Vector(1, 1, 1) * 52
 
-	self:SetModel("models/props_wasteland/kitchen_counter001c.mdl")
+	self:SetModel(self.Model)
 	self:PhysicsInitBox(-fireSize, fireSize)
 
 	self:SetCollisionGroup(COLLISION_GROUP_WEAPON)

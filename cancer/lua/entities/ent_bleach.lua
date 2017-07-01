@@ -4,6 +4,7 @@ ENT.Type = "anim"
 ENT.Base = "base_anim"
 
 ENT.PrintName = "Bleach"
+
 ENT.Spawnable = true
 ENT.Model = "models/props_junk/garbage_plasticbottle001a.mdl"
 
