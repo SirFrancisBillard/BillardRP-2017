@@ -45,14 +45,14 @@ if SERVER then
 			self:EmitSound(BounceSound)
 		end
 
-		-- Bounce like a crazy bitch
+		-- bounce like a crazy bitch
 		local LastSpeed = math.max(data.OurOldVelocity:Length(), data.Speed)
 		local NewVelocity = phys:GetVelocity()
 		NewVelocity:Normalize()
 
 		LastSpeed = math.max(NewVelocity:Length(), LastSpeed)
 
-		local TargetVelocity = NewVelocity * LastSpeed * 0.9
+		local TargetVelocity = NewVelocity * LastSpeed * 0.8
 
 		phys:SetVelocity(TargetVelocity)
 	end

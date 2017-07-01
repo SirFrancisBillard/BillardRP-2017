@@ -44,7 +44,7 @@ SWEP.HitSound = Sound("tennis/hit.wav")
 SWEP.MissSound = Sound("Weapon_Crowbar.Single")
 
 SWEP.Delay = 0.5
-SWEP.HitForce = 8000
+SWEP.HitForce = 6000
 
 function SWEP:Initialize()
 	self:SetHoldType("slam")
@@ -58,6 +58,7 @@ function SWEP:Hit(ball)
 	local phys = ball:GetPhysicsObject()
 	if not IsValid(phys) then return end
 	local velocity = self.Owner:GetAimVector()
+	velocity.z = 0.5
 	velocity = velocity * self.HitForce
 	phys:ApplyForceCenter(velocity)
 	self.Owner:EmitSound(self.HitSound)
