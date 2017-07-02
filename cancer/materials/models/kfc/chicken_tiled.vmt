@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/kfc/chicken_tiled"
+	"$bumpmap" "models/kfc/chicken_normal"
+}

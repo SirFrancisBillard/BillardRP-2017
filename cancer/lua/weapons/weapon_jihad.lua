@@ -35,12 +35,12 @@ sound.Add({
 })
 
 SWEP.PrintName = "Jihad Bomb"
-SWEP.Slot = 4
+SWEP.Slot = 2
 SWEP.SlotPos = 1
 SWEP.DrawAmmo = false
 SWEP.DrawCrosshair = false
 
-SWEP.Instructions = "Primary fire to explode almost instantly."
+SWEP.Instructions = "<color=green>[PRIMARY FIRE]</color> Explode almost instantly."
 SWEP.Purpose = "Sacrifice yourself for Allah."
 
 SWEP.UseHands = true

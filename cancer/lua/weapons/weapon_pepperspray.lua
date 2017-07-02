@@ -1,13 +1,14 @@
 AddCSLuaFile()
 
-SWEP.PrintName			= "Pepper Spray"
-SWEP.Instructions		= "Primary fire to disorient someone."
-
 game.AddAmmoType({
 	name = "pepperspray_ammo",
 	dmgtype = DMG_BURN,
 	tracer = TRACER_NONE,
 })
+
+
+SWEP.PrintName = "Pepper Spray"
+SWEP.Instructions = "<color=green>[PRIMARY FIRE]</color> Disorient someone."
 
 SWEP.Spawnable = true
 
